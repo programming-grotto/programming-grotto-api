@@ -39,5 +39,4 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy with rsync
-        run: rsync -avz --delete $(find build | grep -i "SNAPSHOT.jar") \
-              ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
+        run: rsync -avz --delete ./build/libs/backend-0.0.1-SNAPSHOT.jar ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
